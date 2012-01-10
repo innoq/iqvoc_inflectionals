@@ -1,0 +1,7 @@
+<li>
+  <%= f.label :inflectionals_attributes, t("txt.views.labels.inflectionals") %>
+  <%= f.text_area :inflectionals_attributes,
+    :value => label.send(klass.name.to_relation_name).map(&:value).join("\n"),
+    :rows => 10,
+    :cols => 40 %>
+</li>

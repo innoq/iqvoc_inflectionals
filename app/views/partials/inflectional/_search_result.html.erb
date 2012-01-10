@@ -1,0 +1,13 @@
+<dt>
+  <%= t("txt.views.search_results.search_term_in_results") %>: <%= result[:query] %><br>
+  Ergebnisse:<br>
+  <span style="font-weight: normal">
+    <% if result[:result].blank? %>
+      <%= t("txt.views.search_results.no_results") %>
+    <% else %>
+      <% result[:result].group_by{|i| i.label}.each do |key, value| %>
+        <%= link_to(key.value, label_path(:id => key)) %> (<%= value.map(&:value).join(", ") %>)<br>
+      <% end %>
+    <% end %>
+  </span>
+</dt>

@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      inflectional:
+        base:
+          one:   "Inflectional"
+          other: "Inflectionals"
