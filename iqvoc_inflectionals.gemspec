@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "iqvoc_inflectionals"
 
+  s.add_dependency "rails", "~> 3.1.3"
   s.add_dependency "iqvoc"
   s.add_dependency "iqvoc_skosxl"
 

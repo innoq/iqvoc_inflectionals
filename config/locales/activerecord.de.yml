@@ -1,7 +1,6 @@
 de:
   activerecord:
     models:
-      inflectional:
-        base:
-          one:   "Schreibweise"
-          other: "Schreibweisen"
+      inflectional/base:
+        one:   Schreibweise
+        other: Schreibweisen

@@ -4,7 +4,7 @@ require 'digest/md5'
 
 class Inflectional::Base < ActiveRecord::Base
 
-  class_inheritable_accessor :rdf_namespace, :rdf_predicate
+  class_attribute :rdf_namespace, :rdf_predicate
   self.rdf_namespace = 'umt'
   self.rdf_predicate = 'inflectional'
 
