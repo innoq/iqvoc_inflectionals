@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 namespace :iqvoc_inflectionals do
   namespace :db do
 
