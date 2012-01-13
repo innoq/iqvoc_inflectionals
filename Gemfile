@@ -1,7 +1,5 @@
 source "http://rubygems.org"
 
-gemspec
-
 gem 'iqvoc', :path => '../iqvoc' # TODO: local path should be optional
 gem 'iqvoc_skosxl', :path => '../iqvoc_skosxl' # TODO: local path should be optional
 

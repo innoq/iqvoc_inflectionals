@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'iqvoc/inflectionals/version'
-require 'iqvoc/inflectionals/engine'
 
 module IqvocInflectionals
 
