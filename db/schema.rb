@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(:version => 20120109143704) do
     t.string   "value",                :limit => 1024
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "published_at"
     t.integer  "rev",                                  :default => 1
     t.integer  "published_version_id"
+    t.date     "published_at"
     t.integer  "locked_by"
     t.date     "expired_at"
     t.date     "follow_up"
