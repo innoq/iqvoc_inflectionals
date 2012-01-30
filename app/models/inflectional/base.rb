@@ -8,7 +8,7 @@ class Inflectional::Base < ActiveRecord::Base
   self.rdf_namespace = 'umt'
   self.rdf_predicate = 'inflectional'
 
-  set_table_name 'inflectionals'
+  self.table_name ='inflectionals'
 
   validates :value, :presence => true
   validates :label_id, :presence => true

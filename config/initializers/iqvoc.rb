@@ -2,7 +2,7 @@
 
 require 'iqvoc/xllabel' # XXX: this basically duplicates iqvoc_skosxl's initializer - but is required to ensure correct loading order!?
 
-Iqvoc.title = "iQvoc Inflectionals"
+Iqvoc.config.register_setting("title", "iQvoc Inflectionals")
 
 #Iqvoc.searchable_class_names << "Inflectional::Base" # XXX: application's responsibility!?
 
