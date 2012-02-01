@@ -310,7 +310,7 @@ class Inflectional::Base < ActiveRecord::Base
 
   def self.referenced_by(label_class)
     # To something with the label class
-    label_class.send(:include, Inflectional::LabelExtension)
+    label_class.send(:include, Iqvoc::Inflectionals::LabelExtensions)
   end
 
   def self.deep_cloning_relations
