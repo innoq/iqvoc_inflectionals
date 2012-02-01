@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
-gem 'iqvoc',        '~> 3.3.3'
-gem 'iqvoc_skosxl', '~> 1.1.4'
+gemspec
 
 group :development, :test do
   gem 'sqlite3'
