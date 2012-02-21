@@ -19,9 +19,9 @@ class Inflectional::Base < ActiveRecord::Base
     self.normal_hash = self.class.normalize(self.value)
   end
 
-  scope :by_query_value, lambda { |query|
+  def self.by_query_value(query)
     where(["LOWER(#{table_name}.value) LIKE ?", query.to_s.downcase])
-  }
+  end
 
   MAPPINGS = {
     :de => {
