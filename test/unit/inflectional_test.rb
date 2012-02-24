@@ -10,7 +10,7 @@ class InflectionalTest < ActiveSupport::TestCase
 
   test "instance creation" do
     label = Label::SKOSXL::Base.create!(:value => "foo",
-        :origin => OriginMapping.merge("foo"))
+        :origin => Iqvoc::Origin.new("foo"))
     label.inflectionals.create!(:value => "bar")
 
     assert_equal 2, Inflectional::Base.count
@@ -20,7 +20,7 @@ class InflectionalTest < ActiveSupport::TestCase
   test "hashing of values within the label callback" do
     @words.each do |word|
       Label::SKOSXL::Base.create!(:value => word,
-          :origin => OriginMapping.merge(word))
+          :origin => Iqvoc::Origin.new(word))
     end
 
     assert_equal @words.count, Inflectional::Base.count
@@ -28,6 +28,10 @@ class InflectionalTest < ActiveSupport::TestCase
       normalized = Inflectional::Base.normalize(inflectional.value)
       assert_equal normalized, inflectional.normal_hash
     end
+  end
+
+  test "base form sanitizer extension for origin generator" do
+    assert_equal "commaslashdotbracketbracket", Iqvoc::Origin.new("comma,slash/dot.bracket[bracket]").sanitize_base_form.to_s
   end
 
 end

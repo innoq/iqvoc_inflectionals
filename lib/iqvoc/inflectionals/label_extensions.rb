@@ -31,9 +31,9 @@ module Iqvoc
       def generate_inflectionals!
         return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-        converted_literal_form = OriginMapping.replace_umlauts(value)
+        converted_literal_form = Iqvoc::Origin.new(value).replace_umlauts.to_s
 
-        diff = OriginMapping.sanitize_for_base_form(converted_literal_form).size - base_form.size
+        diff = Iqvoc::Origin.new(converted_literal_form).sanitize_base_form.to_s.size - base_form.size
 
         unless base_form.blank?
           new_base_form = converted_literal_form[0..(base_form.length-1)]
