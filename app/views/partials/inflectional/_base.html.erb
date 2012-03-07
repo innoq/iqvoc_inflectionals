@@ -11,11 +11,7 @@
     <p><%= t("txt.views.labels.inflectionals_used_in") %></p>
     <ul>
       <% inflectionals_labels.each do |inf| %>
-        <% if inf.published? %>
-          <li><%= link_to inf.value, label_path(:id => inf) %></li>
-        <% else %>
-          <li><%= link_to inf.value, versioned_label_path(:id => inf) %></li>
-        <% end %>
+        <li><%= link_to inf.value, label_path(:published => inf.published? ? nil : 0, :id => inf) %></li>
       <% end %>
     </ul>
   <% end %>
