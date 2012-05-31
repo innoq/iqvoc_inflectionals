@@ -1,12 +1,12 @@
-<h4><%= t("txt.views.labels.inflectionals") %></h4>
-<% labels_inflectionals_values = label.send(klass.name.to_relation_name).map(&:value) %>
-<div class="relation">
+<div class="relation panel">
+  <h2><%= t("txt.views.labels.inflectionals") %></h2>
+  <% labels_inflectionals_values = label.send(klass.name.to_relation_name).map(&:value) %>
   <%= labels_inflectionals_values.join(', ') %>
   <%
-  all_inflectionals = Inflectional::Base.where(:value => labels_inflectionals_values).all
-  # subtract initial and current version from the inflectionals collection
-  inflectionals_labels = Iqvoc::XLLabel.base_class.find(all_inflectionals.map(&:label_id)-[label.published_version_id, label.id].compact)
-%>
+    all_inflectionals = Inflectional::Base.where(:value => labels_inflectionals_values).all
+    # subtract initial and current version from the inflectionals collection
+    inflectionals_labels = Iqvoc::XLLabel.base_class.find(all_inflectionals.map(&:label_id)-[label.published_version_id, label.id].compact)
+  %>
   <% if inflectionals_labels.present? %>
     <p><%= t("txt.views.labels.inflectionals_used_in") %></p>
     <ul>
