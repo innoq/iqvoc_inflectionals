@@ -11,7 +11,7 @@ class Inflectional::Base < ActiveRecord::Base
   self.table_name ='inflectionals'
 
   validates :value, :presence => true
-  validates :label_id, :presence => true
+  # validates :label_id, :presence => true
 
   belongs_to :label, :class_name => Iqvoc::XLLabel.base_class_name
 
