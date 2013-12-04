@@ -6,7 +6,7 @@ require 'iqvoc/inflectionals/label_extensions'
 class Inflectional::Base < ActiveRecord::Base
 
   class_attribute :rdf_namespace, :rdf_predicate
-  self.rdf_namespace = 'umt'
+  self.rdf_namespace = 'iqvoc'
   self.rdf_predicate = 'inflectional'
 
   self.table_name ='inflectionals'
@@ -335,7 +335,7 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def build_rdf(document, subject)
-    subject.Umt.inflectional(value, :lang => label.language)
+    subject.send(rdf_namespace).send(rdf_predicate, value, :lang => label.language)
   end
 
   def self.normalize(str)
