@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 require 'digest/md5'
+require 'iqvoc/inflectionals/label_extensions'
 
 class Inflectional::Base < ActiveRecord::Base
 
