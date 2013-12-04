@@ -10,7 +10,7 @@ module Iqvoc
       included do
         attr_reader :inflectionals_attributes
         after_save :overwrite_inflectionals!
-    
+
         after_save do |label|
           # ensure a matching inflectional exists
           if Inflectional::Base.where(:label_id => label.id, :value => label.value).none?
@@ -23,7 +23,7 @@ module Iqvoc
             :foreign_key => "label_id",
             :dependent   => :destroy
       end
-  
+
       def endings
         Inflectional::Base.for_language_and_code(language, inflectional_code)
       end
@@ -69,7 +69,7 @@ module Iqvoc
           end
         end
       end
-      
+
     end
   end
 end
