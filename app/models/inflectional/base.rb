@@ -290,8 +290,9 @@ class Inflectional::Base < ActiveRecord::Base
   def self.single_query(params = {})
     query_str = build_query_string(params)
 
-    by_query_value(query_str).
-      includes(:label).merge(Label::UMT::Base.by_language(params[:languages].to_a).published.order("LOWER(#{Label::Base.table_name}.value)"))
+    scope = by_query_value(query_str).includes(:label)
+    scope = scope.merge(Label::UMT::Base.by_language(params[:languages].to_a).published.order("LOWER(#{Label::Base.table_name}.value)"))
+    scope.map { |result| SearchResult.new(result) }
   end
 
   # def self.single_query(params = {})
