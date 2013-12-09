@@ -6,7 +6,9 @@
       <%= t("txt.views.search_results.no_results") %>
     <% else %>
       <% result[:result].group_by{|i| i.label}.each do |key, value| %>
-        <%= link_to(key.value, label_path(:id => key)) %> (<%= value.map(&:value).join(", ") %>)<br>
+        <% concept = key.concepts_for_labeling_class(Labeling::SKOSXL::PrefLabel).try(:first) %>
+        <% concept_path = concept ? concept_path(:id => concept.origin) : '' %>
+        <%= link_to(key.value, label_path(:id => key), :data => { 'pref-label-for' => concept_path }) %> (<%= value.map(&:value).join(", ") %>)<br>
       <% end %>
     <% end %>
   </span>
