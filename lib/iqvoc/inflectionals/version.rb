@@ -1,5 +1,5 @@
 module Iqvoc
   module Inflectionals
-    VERSION = "2.2.0"
+    VERSION = "2.3.0"
   end
 end
