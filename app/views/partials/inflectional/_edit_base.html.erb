@@ -1,8 +1,5 @@
-<%= f.input :inflectionals_attributes,
-  :as => :text,
-  :label => t("txt.views.labels.inflectionals"),
-  :value => label.send(klass.name.to_relation_name).map(&:value).join("\n"),
-  :input_html => {
+<%= f.text_area :inflectionals_attributes,
+    :label => t("txt.views.labels.inflectionals"),
+    :value => label.send(klass.name.to_relation_name).map(&:value).join("\n"),
     :rows => 10,
-    :cols => 40
-  } %>
+    :cols => 80 %>
