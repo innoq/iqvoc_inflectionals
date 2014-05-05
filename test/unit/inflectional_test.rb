@@ -24,10 +24,6 @@ class InflectionalTest < ActiveSupport::TestCase
     end
 
     assert_equal @words.count, Inflectional::Base.count
-    Inflectional::Base.all.each do |inflectional|
-      normalized = Inflectional::Base.normalize(inflectional.value)
-      assert_equal normalized, inflectional.normal_hash
-    end
   end
 
   test "base form sanitizer extension for origin generator" do
