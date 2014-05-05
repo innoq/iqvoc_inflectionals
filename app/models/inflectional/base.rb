@@ -340,8 +340,7 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def self.normalize(str)
-    str = str.to_s.downcase
-    Digest::MD5.hexdigest(str)
+    Digest::MD5.hexdigest(str.to_s.mb_chars.downcase)
   end
 
 end
