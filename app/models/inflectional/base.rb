@@ -2,6 +2,7 @@
 
 require 'digest/md5'
 require 'iqvoc/inflectionals/label_extensions'
+require 'iqvoc/rdfapi'
 
 class Inflectional::Base < ActiveRecord::Base
 
@@ -18,6 +19,21 @@ class Inflectional::Base < ActiveRecord::Base
 
   before_save do
     self.normal_hash = self.class.normalize(self.value)
+  end
+
+  def self.build_from_rdf(subject, predicate, object)
+    unless object =~ Iqvoc::RDFAPI::LITERAL_REGEXP
+      raise InvalidStringLiteralError, "#{self.name}#build_from_rdf: Object (#{object}) must be a string literal"
+    end
+
+    lang = $3
+    value = begin
+      JSON.parse(%Q{["#{$1}"]})[0].gsub("\\n", "\n") # Trick to decode \uHHHHH chars
+    rescue JSON::ParserError
+      $1
+    end
+
+    create(:label => subject, :value => value)
   end
 
   def self.by_query_value(query)
