@@ -7,7 +7,7 @@ class ImportTest < ActiveSupport::TestCase
   TEST_DATA = File.open(File.expand_path("../../fixtures/hobbies.nt", __FILE__))
 
   setup do
-    @importer = Iqvoc::SkosImporter.new(TEST_DATA, "http://hobbies.com#")
+    @importer = Iqvoc::SkosImporter.new(TEST_DATA, "http://hobbies.com/")
   end
 
   test "import inflectionals" do
