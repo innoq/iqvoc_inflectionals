@@ -17,10 +17,9 @@ class ImportTest < ActiveSupport::TestCase
 
     concept = Concept::SKOS::Base.first
 
-    assert concept.pref_labels.first.inflectionals.one?
-
-    inflectional = concept.pref_labels.first.inflectionals.first
-    assert_equal "Computer programmings", inflectional.value
+    assert_equal 2, concept.pref_labels.first.inflectionals.count
+    assert_equal 1, concept.pref_labels.first.inflectionals.where(:value => "Computer programming (used as xl:prefLabel)").count
+    assert_equal 1, concept.pref_labels.first.inflectionals.where(:value => "Computer programmings").count
   end
 
 end

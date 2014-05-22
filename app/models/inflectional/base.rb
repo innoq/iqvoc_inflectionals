@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'digest/md5'
-require 'iqvoc/inflectionals/label_extensions'
 require 'iqvoc/rdfapi'
 
 class Inflectional::Base < ActiveRecord::Base
@@ -32,7 +31,6 @@ class Inflectional::Base < ActiveRecord::Base
     rescue JSON::ParserError
       $1
     end
-
     create(:label => subject, :value => value)
   end
 
@@ -328,7 +326,7 @@ class Inflectional::Base < ActiveRecord::Base
 
   def self.referenced_by(label_class)
     # To something with the label class
-    label_class.send(:include, Iqvoc::Inflectionals::LabelExtensions)
+    label_class.send(:include, Inflectionable)
   end
 
   def self.deep_cloning_relations
