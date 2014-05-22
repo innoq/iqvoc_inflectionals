@@ -4,3 +4,8 @@
 <http://hobbies.com/computer_programming-xl-preflabel-en> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2008/05/skos-xl#Label> .
 <http://hobbies.com/computer_programming-xl-preflabel-en> <http://www.w3.org/2008/05/skos-xl#literalForm> "Computer programming (used as xl:prefLabel)"@en .
 <http://hobbies.com/computer_programming-xl-preflabel-en> <http://try.iqvoc.net/schema#inflectional> "Computer programmings"@en .
+<http://hobbies.com/computering> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2008/05/skos-xl#Label> .
+<http://hobbies.com/computering> <http://www.w3.org/2008/05/skos-xl#literalForm> "Computering"@en .
+<http://hobbies.com/nerding> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2008/05/skos-xl#Label> .
+<http://hobbies.com/nerding> <http://www.w3.org/2008/05/skos-xl#literalForm> "Nerding"@en .
+<http://hobbies.com/nerding> <http://try.iqvoc.net/schema#inflectional> "Nerding"@en .

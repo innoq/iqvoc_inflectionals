@@ -31,7 +31,8 @@ class Inflectional::Base < ActiveRecord::Base
     rescue JSON::ParserError
       $1
     end
-    create(:label => subject, :value => value)
+
+    where(:label => subject, :value => value).first_or_create
   end
 
   def self.by_query_value(query)

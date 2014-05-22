@@ -60,8 +60,8 @@ module Inflectionable
 
   def create_default_inflectional
     # ensure a matching inflectional exists
-    if value
-      Inflectional::Base.where(:label => self, :value => value).first_or_create!
+    if value && inflectionals.where(:value => value).none?
+      inflectionals.create(:value => value)
     end
   end
 end
