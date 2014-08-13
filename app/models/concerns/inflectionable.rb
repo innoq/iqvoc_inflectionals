@@ -19,7 +19,7 @@ module Inflectionable
   def generate_inflectionals!
     return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-    converted_literal_form = Iqvoc::Origin.new(value).replace_umlauts.to_s
+    converted_literal_form = Iqvoc::Origin.new(value).to_s
 
     diff = Iqvoc::Origin.new(converted_literal_form).sanitize_base_form.to_s.size - base_form.size
 
