@@ -27,7 +27,7 @@ class InflectionalTest < ActiveSupport::TestCase
   end
 
   test "base form sanitizer extension for origin generator" do
-    assert_equal "commaslashdotbracketbracket", Iqvoc::Origin.new("comma,slash/dot.bracket[bracket]").sanitize_base_form.to_s
+    assert_equal "commaslashdotbracketbracket", Label::SKOSXL::Base.new.sanitize_base_form("comma,slash/dot.bracket[bracket]")
   end
 
 end

@@ -19,9 +19,9 @@ module Inflectionable
   def generate_inflectionals!
     return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-    converted_literal_form = Iqvoc::Origin.new(value).to_s
+    converted_literal_form = value.to_s.parameterize
 
-    diff = Iqvoc::Origin.new(converted_literal_form).sanitize_base_form.to_s.size - base_form.size
+    diff = sanitize_base_form(converted_literal_form).size - base_form.size
 
     unless base_form.blank?
       new_base_form = converted_literal_form[0..(base_form.length-1)]
@@ -42,6 +42,10 @@ module Inflectionable
     save(:validate => false)
 
     inflectionals
+  end
+
+  def sanitize_base_form(str)
+    str.gsub(/[,\/\.\[\]]/, '')
   end
 
   def inflectionals_attributes=(str)
