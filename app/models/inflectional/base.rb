@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'digest/md5'
-require 'iqvoc/rdfapi'
 
 class Inflectional::Base < ActiveRecord::Base
 
@@ -21,7 +20,7 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def self.build_from_rdf(subject, predicate, object)
-    unless object =~ Iqvoc::RDFAPI::LITERAL_REGEXP
+    unless object =~ RDFAPI::LITERAL_REGEXP
       raise InvalidStringLiteralError, "#{self.name}#build_from_rdf: Object (#{object}) must be a string literal"
     end
 

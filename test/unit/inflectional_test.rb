@@ -10,7 +10,7 @@ class InflectionalTest < ActiveSupport::TestCase
 
   test "instance creation" do
     label = Label::SKOSXL::Base.create!(:value => "foo",
-        :origin => Iqvoc::Origin.new("foo").to_s)
+        :origin => Origin.new("foo").to_s)
     label.inflectionals.create!(:value => "bar")
 
     assert_equal 2, Inflectional::Base.count
@@ -20,7 +20,7 @@ class InflectionalTest < ActiveSupport::TestCase
   test "hashing of values within the label callback" do
     @words.each do |word|
       Label::SKOSXL::Base.create!(:value => word,
-          :origin => Iqvoc::Origin.new(word).to_s)
+          :origin => Origin.new(word).to_s)
     end
 
     assert_equal @words.count, Inflectional::Base.count
