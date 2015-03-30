@@ -19,7 +19,7 @@ module Inflectionable
   def generate_inflectionals!
     return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-    converted_literal_form = value.to_s.parameterize
+    converted_literal_form = value.to_s
 
     diff = sanitize_base_form(converted_literal_form).size - base_form.size
 
@@ -35,7 +35,11 @@ module Inflectionable
 
     endings.each do |ending|
       value = ending == "." ? new_base_form : (new_base_form + ending.downcase)
-      send(Inflectional::Base.name.to_relation_name).create!(:value => value)
+      if value != self.value
+        # don't create inflectional only if differ from label value
+        # otherwise we have two identical inflectionals
+        send(Inflectional::Base.name.to_relation_name).create!(:value => value)
+      end
     end
 
     self.base_form = new_base_form
