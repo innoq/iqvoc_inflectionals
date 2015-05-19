@@ -15,8 +15,11 @@ class Inflectional::Base < ActiveRecord::Base
 
   belongs_to :label, :class_name => Iqvoc::XLLabel.base_class_name
 
-  before_save do
-    self.normal_hash = self.class.normalize(self.value)
+  def value=(str)
+    write_attribute(:value, str)
+
+    value_hash = self.class.normalize(str)
+    write_attribute(:normal_hash, value_hash)
   end
 
   def self.build_from_rdf(subject, predicate, object)
@@ -333,6 +336,18 @@ class Inflectional::Base < ActiveRecord::Base
 
   def self.normalize(str)
     Digest::MD5.hexdigest(str.to_s.mb_chars.downcase)
+  end
+
+  def ==(other)
+    self.normal_hash == other.normal_hash
+  end
+
+  def eql?(other)
+    self == other
+  end
+
+  def hash
+    self.normal_hash
   end
 
 end
