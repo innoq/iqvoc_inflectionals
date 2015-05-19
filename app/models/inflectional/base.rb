@@ -346,8 +346,4 @@ class Inflectional::Base < ActiveRecord::Base
     self == other
   end
 
-  def hash
-    self.normal_hash
-  end
-
 end
