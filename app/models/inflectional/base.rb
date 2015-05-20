@@ -339,7 +339,7 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def ==(other)
-    self.normal_hash == other.normal_hash
+    self.normal_hash == other.try(:normal_hash)
   end
 
   def eql?(other)
