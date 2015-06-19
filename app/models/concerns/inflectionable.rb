@@ -24,7 +24,14 @@ module Inflectionable
     diff = sanitize_base_form(converted_literal_form).size - base_form.size
 
     unless base_form.blank?
-      new_base_form = converted_literal_form[0..(base_form.length-1)]
+      # use special_char_count to build new base_from from literal-form (value)
+      # necessary to deal with words containing special characters, e.g:
+      # value = 'Außenwirtschaftsbeziehungen'
+      # base_form = 'AUSSENWIRTSCHAFTSBEZIEHUNG'
+      # wrong! => converted_literal_form[0..(base_form.length-1)] 'Außenwirtschaftsbeziehunge'
+      # correct! => converted_literal_form[0..(base_form.length-1-special_char_count)] = 'Außenwirtschaftsbeziehungen'
+      special_char_count = count_special_chars(converted_literal_form)
+      new_base_form = converted_literal_form[0..(base_form.length-1-special_char_count)]
     end
 
     Rails.logger.debug "converted_literal_form => #{converted_literal_form} (#{converted_literal_form.size}) |
@@ -50,6 +57,10 @@ module Inflectionable
 
   def sanitize_base_form(str)
     str.gsub(/[,\/\.\[\]]/, '')
+  end
+
+  def count_special_chars(str)
+    str.count('ÖÄÜöäüß')
   end
 
   def inflectionals_attributes=(str)
