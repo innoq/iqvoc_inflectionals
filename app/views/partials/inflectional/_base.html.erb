@@ -1,12 +1,21 @@
 <div class="relation panel">
   <h2><%= t("txt.views.labels.inflectionals") %></h2>
   <% labels_inflectionals_values = label.send(klass.name.to_relation_name).map(&:value) %>
-  <%= labels_inflectionals_values.join(', ') %>
+
+  <% if labels_inflectionals_values.any? %>
+    <ul>
+      <% labels_inflectionals_values.each do |inf| %>
+        <li><%= inf %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%
     all_inflectionals = Inflectional::Base.where(:value => labels_inflectionals_values).all
     # subtract initial and current version from the inflectionals collection
     inflectionals_labels = Iqvoc::XLLabel.base_class.find(all_inflectionals.map(&:label_id)-[label.published_version_id, label.id].compact)
   %>
+
   <% if inflectionals_labels.present? %>
     <p><%= t("txt.views.labels.inflectionals_used_in") %></p>
     <ul>
