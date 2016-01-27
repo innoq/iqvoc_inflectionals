@@ -8,7 +8,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Eisenbahnfahrzeug',
       language: 'de',
-      base_form: 'EISENBAHNFAHRZEUG',
+      base_form: 'Eisenbahnfahrzeug',
       inflectional_code: 'CA')
 
     label.generate_inflectionals!
@@ -24,7 +24,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Außenwirtschaftsbeziehung',
       language: 'de',
-      base_form: 'AUSSENWIRTSCHAFTSBEZIEHUNG',
+      base_form: 'Außenwirtschaftsbeziehung',
       inflectional_code: 'D0')
 
     label.generate_inflectionals!
@@ -39,7 +39,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Marschgewässer',
       language: 'de',
-      base_form: 'MARSCHGEWAESSER',
+      base_form: 'Marschgewässer',
       inflectional_code: 'D9')
 
     label.generate_inflectionals!
@@ -54,7 +54,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Eisen- und Stahlindustrie',
       language: 'de',
-      base_form: 'EISEN UND STAHLINDUSTRIE',
+      base_form: 'Eisen- und Stahlindustrie',
       inflectional_code: 'FF')
 
     label.generate_inflectionals!
@@ -67,7 +67,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Agrar-Umweltindikator',
       language: 'de',
-      base_form: 'AGRAR UMWELTINDIKATOR',
+      base_form: 'Agrar-Umweltindikator',
       inflectional_code: 'D7')
 
     label.generate_inflectionals!

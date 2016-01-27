@@ -8,9 +8,9 @@ module Inflectionable
     after_save :create_default_inflectional
 
     has_many :inflectionals,
-      :class_name => "Inflectional::Base",
-      :foreign_key => "label_id",
-      :dependent => :destroy
+             :class_name => "Inflectional::Base",
+             :foreign_key => "label_id",
+             :dependent => :destroy
   end
 
   def endings
@@ -20,53 +20,18 @@ module Inflectionable
   def generate_inflectionals!
     return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-    converted_literal_form = value.to_s
-
-    diff = sanitize_base_form(converted_literal_form).size - base_form.size
-
-    unless base_form.blank?
-      # use special_char_count to build new base_from from literal-form (value)
-      # necessary to deal with words containing special characters, e.g:
-      # value = 'Außenwirtschaftsbeziehungen'
-      # base_form = 'AUSSENWIRTSCHAFTSBEZIEHUNG'
-      # wrong! => converted_literal_form[0..(base_form.length-1)] 'Außenwirtschaftsbeziehunge'
-      # correct! => converted_literal_form[0..(base_form.length-1-special_char_count+hyphen_char_count)] = 'Außenwirtschaftsbeziehungen'
-      special_char_count = count_special_chars(converted_literal_form)
-      stripped_char_count = count_stripped_chars(converted_literal_form)
-      new_base_form = converted_literal_form[0..(base_form.length-1-special_char_count+stripped_char_count)]
-    end
-
-    Rails.logger.debug "converted_literal_form => #{converted_literal_form} (#{converted_literal_form.size}) |
-    base_form => #{base_form} (#{base_form.size}) |
-    new_base_form => #{new_base_form} |
-    value => #{value} (#{value.size}) |
-    diff => #{diff}"
-
     endings.each do |ending|
-      value = ending == "." ? new_base_form : (new_base_form + ending.downcase)
-      if value != self.value
-        # create inflectional only if differ from label value
-        # otherwise we have two identical inflectionals
-        send(Inflectional::Base.name.to_relation_name).create!(:value => value)
-      end
+      value = ending == '.' ? base_form : (base_form + ending.downcase)
+      # create inflectional only if differ from label value
+      next if value == self.value
+
+      send(Inflectional::Base.name.to_relation_name).create!(value: value)
     end
 
-    self.base_form = new_base_form
-    save(:validate => false)
+    # self.base_form = new_base_form
+    save(validate: false)
 
     inflectionals
-  end
-
-  def sanitize_base_form(str)
-    str.gsub(/[,\/\.\[\]]/, '')
-  end
-
-  def count_special_chars(str)
-    str.count('ÖÄÜöäüß')
-  end
-
-  def count_stripped_chars(str)
-    str.count(',-[]')
   end
 
   def inflectionals_attributes=(str)
@@ -78,7 +43,7 @@ module Inflectionable
     transaction do
       inflectionals.delete_all
       inflectionals_attributes.each do |value|
-        inflectionals.create!(:value => value)
+        inflectionals.create!(value: value)
       end
     end
   end
