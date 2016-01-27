@@ -26,8 +26,4 @@ class InflectionalTest < ActiveSupport::TestCase
     assert_equal @words.count, Inflectional::Base.count
   end
 
-  test "base form sanitizer extension for origin generator" do
-    assert_equal "commaslashdotbracketbracket", Label::SKOSXL::Base.new.sanitize_base_form("comma,slash/dot.bracket[bracket]")
-  end
-
 end
