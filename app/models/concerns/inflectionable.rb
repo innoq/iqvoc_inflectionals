@@ -25,7 +25,9 @@ module Inflectionable
       # create inflectional only if differ from label value
       next if value == self.value
 
-      send(Inflectional::Base.name.to_relation_name).create!(value: value)
+      if value && inflectionals.where(:value => value).none?
+        send(Inflectional::Base.name.to_relation_name).create!(value: value)
+      end
     end
 
     # self.base_form = new_base_form
