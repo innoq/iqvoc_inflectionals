@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/innoq/iqvoc.git
-  revision: f4696733ec292af51f4a03b8fc579952c7406a24
+  revision: cb3809eb0c8a5cc9de3d2a2e644f764321c97283
   branch: master
   specs:
     iqvoc (4.9.0)
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: git://github.com/innoq/iqvoc_skosxl.git
-  revision: 73fce566ec791999af024ce61706ae2a040a344b
+  revision: 913cdbda19e487c8752f2b8669af1f17a16b81e3
   branch: master
   specs:
     iqvoc_skosxl (2.7.0)
@@ -338,3 +338,6 @@ DEPENDENCIES
   mysql2
   pry-rails
   sqlite3
+
+BUNDLED WITH
+   1.11.2

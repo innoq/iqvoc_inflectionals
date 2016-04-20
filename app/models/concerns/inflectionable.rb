@@ -17,16 +17,16 @@ module Inflectionable
     Inflectional::Base.for_language_and_code(language, inflectional_code)
   end
 
+  def candidates
+    Inflectional::Base.candidates_for(base_form, language, inflectional_code)
+  end
+
   def generate_inflectionals!
     return send(Inflectional::Base.name.to_relation_name) if base_form.blank?
 
-    endings.each do |ending|
-      value = ending == '.' ? base_form : (base_form + ending.downcase)
-      # create inflectional only if differ from label value
-      next if value == self.value
-
-      if value && inflectionals.where(:value => value).none?
-        send(Inflectional::Base.name.to_relation_name).create!(value: value)
+    candidates.each do |candidate|
+      if candidate && inflectionals.where(value: candidate).none?
+        send(Inflectional::Base.name.to_relation_name).create!(value: candidate)
       end
     end
 

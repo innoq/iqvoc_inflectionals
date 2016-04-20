@@ -4,6 +4,20 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../test_helper')
 
 class InflectionalGenerationTest < ActiveSupport::TestCase
 
+  test "inflectional candidates generation (without instantiating)" do
+    # german example
+    generated_candidates = Inflectional::Base.candidates_for('Baum', 'de', 'D5')
+    expected_candidates = %w(Baum Baume Baumes Baums)
+    assert_equal expected_candidates.size, generated_candidates.size
+    expected_candidates.each { |inf| assert generated_candidates.include?(inf), "inflectional '#{inf}' expected" }
+
+    # english example
+    generated_candidates = Inflectional::Base.candidates_for('tree', 'en', 'D7')
+    expected_candidates = %w(tree trees)
+    assert_equal expected_candidates.size, generated_candidates.size
+    expected_candidates.each { |inf| assert generated_candidates.include?(inf), "inflectional '#{inf}' expected" }
+  end
+
   test "simple inflectional generation" do
     label = Iqvoc::XLLabel.base_class.create!(
       value: 'Eisenbahnfahrzeug',

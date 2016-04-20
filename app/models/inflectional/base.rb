@@ -278,6 +278,16 @@ class Inflectional::Base < ActiveRecord::Base
     MAPPINGS
   end
 
+  def self.candidates_for(base_form, language, inflectional_code)
+    return [] if language.blank? || inflectional_code.blank? || base_form.blank?
+
+    endings = for_language_and_code(language, inflectional_code)
+
+    endings.map do |ending|
+      ending == '.' ? base_form : (base_form + ending.downcase)
+    end
+  end
+
   def self.forces_multi_query?
     true
   end
