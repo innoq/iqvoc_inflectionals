@@ -2,4 +2,9 @@
     :label => t("txt.views.labels.inflectionals"),
     :value => label.send(klass.name.to_relation_name).map(&:value).join("\n"),
     :rows => 10,
-    :cols => 80 %>
+    :cols => 80,
+    :data => {
+      :source_base_form => label.base_form,
+      :source_inflectional_code => label.inflectional_code
+    }
+%>
