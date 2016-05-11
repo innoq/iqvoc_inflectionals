@@ -1,10 +1,9 @@
 <%= f.text_area :inflectionals_attributes,
-    :label => t("txt.views.labels.inflectionals"),
-    :value => label.send(klass.name.to_relation_name).map(&:value).join("\n"),
-    :rows => 10,
-    :cols => 80,
-    :data => {
-      :source_base_form => label.base_form,
-      :source_inflectional_code => label.inflectional_code
+    label: t("txt.views.labels.inflectionals"),
+    value: label.send(klass.name.to_relation_name).map(&:value).join("\n"),
+    rows: 10,
+    cols: 80,
+    data: {
+      generated_inflectionals: label.candidates.to_json
     }
 %>
