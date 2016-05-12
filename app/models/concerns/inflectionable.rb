@@ -37,7 +37,7 @@ module Inflectionable
   end
 
   def inflectionals_attributes=(str)
-    @inflectionals_attributes = str.split("\r\n")
+    @inflectionals_attributes = str.split("\r\n").uniq
   end
 
   def overwrite_inflectionals!
