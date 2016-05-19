@@ -227,6 +227,7 @@ class Inflectional::Base < ActiveRecord::Base
       :"R8" =>	["E", "ER", "EST", "LY"],
       :"R9" =>	["LE", "LY"],
       :"RA" =>	["Y", "ILY"],
+      :"U2"	=> ["A", "AS", "ATA"],
       :"V0" =>	[".", "S", "D"],
       :"V1" =>	[".", "S", "ED"],
       :"V2" =>	[".", "ED"],
