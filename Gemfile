@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'iqvoc', '~> 4.9.0', :github => 'innoq/iqvoc', branch: 'master'
+gem 'iqvoc', '~> 4.10.0', :github => 'innoq/iqvoc', branch: 'master'
 gem 'iqvoc_skosxl', '~> 2.7.0', :github => 'innoq/iqvoc_skosxl', branch: 'master'
 
 group :development, :test do
