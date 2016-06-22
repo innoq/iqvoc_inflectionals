@@ -133,7 +133,6 @@ class Inflectional::Base < ActiveRecord::Base
       :"FG"	=> [".", "EN", "ER"],
       :"FH"	=> ["E", "EM", "EN", "ER", "ES", "S"],
       :"G7"	=> [".", "E", "EM", "EN", "ES"],
-      :"N1"	=> [".", "ES"],
       :"N2"	=> ["Y", "IES"],
       :"N3"	=> ["F", "VES"],
       :"N9"	=> ["US", "I", "USES"],
