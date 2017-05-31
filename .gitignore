@@ -6,3 +6,5 @@
 /config/initializers/secret_token.rb
 *.gem
 db/schema.rb
+
+.ruby-version
