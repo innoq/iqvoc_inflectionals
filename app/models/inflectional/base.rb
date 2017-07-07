@@ -323,11 +323,11 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def self.view_section(obj)
-    "inflectionals"
+    "main"
   end
 
   def self.view_section_sort_key(obj)
-    200
+    400
   end
 
   def self.partial_name(obj)
