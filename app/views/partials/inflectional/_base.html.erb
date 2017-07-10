@@ -3,7 +3,7 @@
   <% labels_inflectionals_values = label.send(klass.name.to_relation_name).map(&:value) %>
 
   <% if labels_inflectionals_values.any? %>
-    <ul>
+    <ul class="list-inline">
       <% labels_inflectionals_values.each do |inf| %>
         <li><%= inf %></li>
       <% end %>
@@ -18,7 +18,7 @@
 
   <% if inflectionals_labels.present? %>
     <p><%= t("txt.views.labels.inflectionals_used_in") %></p>
-    <ul>
+    <ul class="list-inline">
       <% inflectionals_labels.each do |inf| %>
         <li><%= link_to inf.value, label_path(:published => inf.published? ? nil : 0, :id => inf) %></li>
       <% end %>
