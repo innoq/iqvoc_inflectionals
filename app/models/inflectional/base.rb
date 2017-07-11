@@ -290,6 +290,10 @@ class Inflectional::Base < ActiveRecord::Base
     true
   end
 
+  def self.supports_multi_query?
+    true
+  end
+
   def self.single_query(params = {})
     query_str = build_query_string(params)
 
