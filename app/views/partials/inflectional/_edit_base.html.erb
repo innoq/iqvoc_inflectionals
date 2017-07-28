@@ -3,6 +3,8 @@
     value: label.send(klass.name.to_relation_name).map(&:value).join("\n"),
     rows: 10,
     cols: 80,
+    autocorrect: 'off',
+    autocapitalize: 'off',
     data: {
       generated_inflectionals: label.candidates.to_json
     }
