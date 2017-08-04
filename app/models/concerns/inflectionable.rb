@@ -52,7 +52,7 @@ module Inflectionable
 
   def create_default_inflectional
     # ensure a matching inflectional exists
-    if value && inflectionals.where(:value => value).none?
+    if value && inflectionals.empty?
       inflectionals.create(:value => value)
     end
   end
