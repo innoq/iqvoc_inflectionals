@@ -298,7 +298,7 @@ class Inflectional::Base < ActiveRecord::Base
     query_str = build_query_string(params)
 
     scope = by_query_value(query_str).includes(:label)
-    scope = scope.references(:labels).merge(Iqvoc::XLLabel.base_class.by_language(params[:languages].to_a).published.order("LOWER(#{Label::Base.table_name}.value)"))
+    scope = scope.references(:labels).merge(Iqvoc::XLLabel.base_class.by_language(params[:languages].to_a).published.order("LENGTH(#{Label::Base.table_name}.value)"))
     scope.map { |result| SearchResult.new(result) }
   end
 
