@@ -2,8 +2,10 @@ language: ruby
 cache: bundler
 bundler_args: "--without production --retry 3"
 rvm:
-- 2.0
 - 2.2
+- 2.3
+- 2.4
+- 2.5
 - ruby-head
 env:
 - DB=sqlite
@@ -21,7 +23,10 @@ branches:
 notifications:
   email: true
   slack:
-    secure: gj0DGf9tUSBfLmjpjvwRuKiUojmWCtP4gfve3vEL1uZ0uzfjNAlibj4jxHO8w2/SNS4PcZ930batya4XoC5/rS19524pZ5brt++p4Xu295spoEqMVoeK+unl1L6ZrazvO5gJkraAqftxiJ2njwJ8OwJS33psXRLb/bZWcLAMb3A=
+    secure: lHuB2hivSh/c1N5v2YjZsRE45Cd0b7kFAftLHt9LL5wqyXZtkm3hwKG0D3G/OzT+oIgP+0kdicveVDjqoAAR5p70sj2flSpRW+fTFqGSsJh7S5OtMoeBB6Ix0YIM5QX3lT0upE0aCA1xOzUaX4vKR6TZO8hEzJBUotInLnFMXoI=
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
 deploy:
   provider: rubygems
   api_key:
