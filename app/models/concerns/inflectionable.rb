@@ -11,6 +11,16 @@ module Inflectionable
              :class_name => "Inflectional::Base",
              :foreign_key => "label_id",
              :dependent => :destroy
+
+    # overwrite class method to query labels by all existing inflectionals
+    # instead of basic xl-label value attribute
+    def self.by_query_value(query)
+      Iqvoc::XLLabel.base_class
+        .references(:inflectionals)
+        .joins(:inflectionals)
+        .where("LOWER(inflectionals.value) LIKE ?", query.mb_chars.downcase.to_s)
+        .group(:id, :origin)
+    end
   end
 
   def endings
