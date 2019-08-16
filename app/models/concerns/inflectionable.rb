@@ -16,10 +16,9 @@ module Inflectionable
     # instead of basic xl-label value attribute
     def self.by_query_value(query)
       Iqvoc::XLLabel.base_class
-        .references(:inflectionals)
-        .joins(:inflectionals)
-        .where("LOWER(inflectionals.value) LIKE ?", query.mb_chars.downcase.to_s)
-        .group(:id, :origin)
+                    .references(:inflectionals)
+                    .joins(:inflectionals)
+                    .where('LOWER(inflectionals.value) LIKE ?', query.mb_chars.downcase.to_s)
     end
   end
 
