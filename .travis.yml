@@ -2,13 +2,13 @@ language: ruby
 cache: bundler
 bundler_args: "--without production --retry 3"
 rvm:
-- 2.2
-- 2.3
 - 2.4
+- 2.5
 - ruby-head
 env:
 - DB=sqlite
 - DB=mysql
+- DB=postgresql
 before_install:
 - cp config/database.yml.$DB config/database.yml
 - gem update bundler
