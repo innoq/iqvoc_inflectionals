@@ -1,4 +1,4 @@
-class CreateInflectionals < ActiveRecord::Migration
+class CreateInflectionals < ActiveRecord::Migration[4.2]
 
   def self.up
     unless table_exists? :inflectionals
