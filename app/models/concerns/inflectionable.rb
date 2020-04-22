@@ -8,9 +8,10 @@ module Inflectionable
     after_save :create_default_inflectional
 
     has_many :inflectionals,
-             :class_name => "Inflectional::Base",
-             :foreign_key => "label_id",
-             :dependent => :destroy
+             class_name: "Inflectional::Base",
+             foreign_key: "label_id",
+             dependent: :destroy,
+             inverse_of: :label
 
     # overwrite class method to query labels by all existing inflectionals
     # instead of basic xl-label value attribute
