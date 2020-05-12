@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/innoq/iqvoc_inflectionals.svg?branch=master)](https://travis-ci.org/innoq/iqvoc_inflectionals)
-
 Inflectionals for iQvoc
 
 Getting Started
