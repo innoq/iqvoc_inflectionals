@@ -1,3 +1,5 @@
+![CI](https://github.com/innoq/iqvoc_inflectionals/workflows/CI/badge.svg)
+
 Inflectionals for iQvoc
 
 Getting Started

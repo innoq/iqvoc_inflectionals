@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_development' %>
+  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_inflectionals_development' %>
   pool: 5
   username: <%= ENV["POSTGRES_USER"] || 'postgres' %>
   password: <%= ENV["POSTGRES_PASSWORD"] || 'postgres' %>
@@ -11,7 +11,7 @@ test:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_test' %>
+  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_inflectionals_test' %>
   pool: 5
   username: <%= ENV["POSTGRES_USER"] || 'postgres' %>
   password: <%= ENV["POSTGRES_PASSWORD"] || 'postgres' %>
@@ -20,7 +20,7 @@ production:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_production' %>
+  database: <%= ENV["POSTGRES_DB"] || 'iqvoc_inflectionals_production' %>
   pool: 5
   username: <%= ENV["POSTGRES_USER"] || 'postgres' %>
   password: <%= ENV["POSTGRES_PASSWORD"] || 'postgres' %>
