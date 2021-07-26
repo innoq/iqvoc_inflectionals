@@ -7,4 +7,10 @@
 *.gem
 db/schema.rb
 
+public/assets
+
+.idea
+*.iml
+
 .ruby-version
+node_modules
