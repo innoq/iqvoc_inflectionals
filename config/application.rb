@@ -30,5 +30,9 @@ module Iqvoc::Inflectionals
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+
+    # This has to be here because iqvoc_inflectionals.rb needs to know if it runs as app or as engine
+    require 'iqvoc_inflectionals'
   end
 end
