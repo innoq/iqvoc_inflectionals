@@ -19,7 +19,7 @@ module Inflectionable
       Iqvoc::XLLabel.base_class
                     .references(:inflectionals)
                     .joins(:inflectionals)
-                    .where('LOWER(inflectionals.value) LIKE ?', query.mb_chars.downcase.to_s)
+                    .where('inflectionals.value ILIKE ?', query.mb_chars.downcase.to_s)
     end
   end
 
