@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = 'iqvoc_inflectionals'
 
-  s.add_dependency 'iqvoc', '~> 4.12.0'
+  s.add_dependency 'iqvoc', '~> 4.14.0'
   s.add_dependency 'iqvoc_skosxl', '~> 2.11.0'
 
   s.files = `git ls-files`.split("\n")
