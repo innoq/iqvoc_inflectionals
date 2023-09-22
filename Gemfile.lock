@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/innoq/iqvoc.git
-  revision: 3e294f4401916fd5eab0154b3fc22ee5b8f387bb
+  revision: 77b2fadd1750be6b52cd73ae447ce0f353dcd3fb
   branch: master
   specs:
     iqvoc (4.14.0)
@@ -303,7 +303,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
-    minitest (5.19.0)
+    minitest (5.20.0)
     msgpack (1.7.2)
     msgpack (1.7.2-java)
     multi_json (1.15.0)

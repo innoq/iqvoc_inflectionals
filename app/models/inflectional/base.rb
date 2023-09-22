@@ -286,14 +286,6 @@ class Inflectional::Base < ActiveRecord::Base
     end
   end
 
-  def self.forces_multi_query?
-    true
-  end
-
-  def self.supports_multi_query?
-    true
-  end
-
   def self.single_query(params = {})
     query_str = build_query_string(params)
 
@@ -301,17 +293,6 @@ class Inflectional::Base < ActiveRecord::Base
     scope = scope.references(:labels).merge(Iqvoc::XLLabel.base_class.by_language(params[:languages].to_a).published.order("LENGTH(#{Label::Base.table_name}.value)"))
     scope.map { |result| SearchResult.new(result) }
   end
-
-  # def self.single_query(params = {})
-  #   query_str = build_query_string(params)
-  #
-  #   Label::UMT::Base.select("DISTINCT #{Label::UMT::Base.table_name}.*").
-  #                    joins(:inflectionals).
-  #                    where(Inflectional::Base.by_query_value(query_str)).
-  #                    by_language(params[:languages].to_a).
-  #                    published.
-  #                    order("LOWER(#{Inflectional::Base.table_name}.value)")
-  # end
 
   def self.search_result_partial_name
     'partials/inflectional/search_result'
