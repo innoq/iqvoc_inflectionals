@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/innoq/iqvoc_skosxl.git
-  revision: 7aedeb161052b069390d23b9d5025202b1bf314c
+  revision: 81033f253c4bf86fe300ed7343d5b2beb61bad31
   branch: main
   specs:
     iqvoc_skosxl (2.11.4)
