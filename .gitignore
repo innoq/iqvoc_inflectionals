@@ -14,3 +14,4 @@ public/assets
 
 .ruby-version
 node_modules
+Gemfile.lock
