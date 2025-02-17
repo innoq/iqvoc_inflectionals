@@ -16,7 +16,7 @@ module Inflectionable
     # overwrite class method to query labels by all existing inflectionals
     # instead of basic xl-label value attribute
     def self.by_query_value(query)
-      Iqvoc::XLLabel.base_class
+      Iqvoc::Xllabel.base_class
                     .references(:inflectionals)
                     .joins(:inflectionals)
                     .where('inflectionals.value ILIKE ?', query.mb_chars.downcase.to_s)

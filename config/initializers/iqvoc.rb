@@ -9,6 +9,6 @@ Iqvoc.config.register_setting("title", "iQvoc Inflectionals")
 # Application's responsibility!
 # Iqvoc.searchable_class_names << "Inflectional::Base"
 
-Iqvoc::XLLabel.additional_association_class_names.
+Iqvoc::Xllabel.additional_association_class_names.
     merge!("Inflectional::Base" => "label_id")
-Iqvoc::XLLabel.view_sections += ["inflectionals"]
+Iqvoc::Xllabel.view_sections += ["inflectionals"]

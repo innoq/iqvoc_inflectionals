@@ -7,7 +7,7 @@
   <%
     all_inflectionals = Inflectional::Base.where(:value => labels_inflectionals_values).all
     # subtract initial and current version from the inflectionals collection
-    inflectionals_labels = Iqvoc::XLLabel.base_class.find(all_inflectionals.map(&:label_id)-[label.published_version_id, label.id].compact)
+    inflectionals_labels = Iqvoc::Xllabel.base_class.find(all_inflectionals.map(&:label_id)-[label.published_version_id, label.id].compact)
   %>
 
   <% if inflectionals_labels.present? %>

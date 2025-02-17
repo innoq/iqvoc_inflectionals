@@ -9,7 +9,7 @@ class InflectionalTest < ActiveSupport::TestCase
   end
 
   test "instance creation" do
-    label = Label::SKOSXL::Base.create!(:value => "foo",
+    label = Label::Skosxl::Base.create!(:value => "foo",
         :origin => Origin.new("foo").to_s)
     label.inflectionals.create!(:value => "bar")
 
@@ -19,7 +19,7 @@ class InflectionalTest < ActiveSupport::TestCase
 
   test "hashing of values within the label callback" do
     @words.each do |word|
-      Label::SKOSXL::Base.create!(:value => word,
+      Label::Skosxl::Base.create!(:value => word,
           :origin => Origin.new(word).to_s)
     end
 

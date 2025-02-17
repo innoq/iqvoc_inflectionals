@@ -19,7 +19,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
   end
 
   test "simple inflectional generation" do
-    label = Iqvoc::XLLabel.base_class.create!(
+    label = Iqvoc::Xllabel.base_class.create!(
       value: 'Eisenbahnfahrzeug',
       language: 'de',
       base_form: 'Eisenbahnfahrzeug',
@@ -35,7 +35,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
   end
 
   test "inflectional generation with german ß" do
-    label = Iqvoc::XLLabel.base_class.create!(
+    label = Iqvoc::Xllabel.base_class.create!(
       value: 'Außenwirtschaftsbeziehung',
       language: 'de',
       base_form: 'Außenwirtschaftsbeziehung',
@@ -50,7 +50,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
   end
 
   test "inflectional generation with umlaut" do
-    label = Iqvoc::XLLabel.base_class.create!(
+    label = Iqvoc::Xllabel.base_class.create!(
       value: 'Marschgewässer',
       language: 'de',
       base_form: 'Marschgewässer',
@@ -65,7 +65,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
   end
 
   test "inflectional generation with hyphen" do
-    label = Iqvoc::XLLabel.base_class.create!(
+    label = Iqvoc::Xllabel.base_class.create!(
       value: 'Eisen- und Stahlindustrie',
       language: 'de',
       base_form: 'Eisen- und Stahlindustrie',
@@ -78,7 +78,7 @@ class InflectionalGenerationTest < ActiveSupport::TestCase
     assert_equal expected_inflectionals.size, generated_inflectionals.size
     expected_inflectionals.each { |inf| assert generated_inflectionals.include?(inf), "inflectional '#{inf}' expected" }
 
-    label = Iqvoc::XLLabel.base_class.create!(
+    label = Iqvoc::Xllabel.base_class.create!(
       value: 'Agrar-Umweltindikator',
       language: 'de',
       base_form: 'Agrar-Umweltindikator',

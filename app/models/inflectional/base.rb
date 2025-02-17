@@ -13,7 +13,7 @@ class Inflectional::Base < ActiveRecord::Base
   validates :value, :presence => true
   # validates :label_id, :presence => true
 
-  belongs_to :label, :class_name => Iqvoc::XLLabel.base_class_name
+  belongs_to :label, class_name: Iqvoc::Xllabel.base_class_name
 
   def value=(str)
     write_attribute(:value, str)
@@ -23,7 +23,7 @@ class Inflectional::Base < ActiveRecord::Base
   end
 
   def self.build_from_rdf(subject, predicate, object)
-    unless object =~ RDFAPI::LITERAL_REGEXP
+    unless object =~ RdfApi::LITERAL_REGEXP
       raise InvalidStringLiteralError, "#{self.name}#build_from_rdf: Object (#{object}) must be a string literal"
     end
 
@@ -290,7 +290,7 @@ class Inflectional::Base < ActiveRecord::Base
     query_str = build_query_string(params)
 
     scope = by_query_value(query_str).includes(:label)
-    scope = scope.references(:labels).merge(Iqvoc::XLLabel.base_class.by_language(params[:languages].to_a).published.order("LENGTH(#{Label::Base.table_name}.value)"))
+    scope = scope.references(:labels).merge(Iqvoc::Xllabel.base_class.by_language(params[:languages].to_a).published.order("LENGTH(#{Label::Base.table_name}.value)"))
     scope.map { |result| SearchResult.new(result) }
   end
 

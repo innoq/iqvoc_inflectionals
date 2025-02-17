@@ -10,17 +10,17 @@ class ImportTest < ActiveSupport::TestCase
   end
 
   test "import inflectionals" do
-    assert_difference "Concept::SKOS::Base.count" do
+    assert_difference "Concept::Skos::Base.count" do
       @importer.run
     end
 
-    concept = Concept::SKOS::Base.first
+    concept = Concept::Skos::Base.first
 
     assert_equal 2, concept.pref_labels.first.inflectionals.count
     assert_equal 1, concept.pref_labels.first.inflectionals.where(:value => "Computer programming (used as xl:prefLabel)").count
     assert_equal 1, concept.pref_labels.first.inflectionals.where(:value => "Computer programmings").count
 
-    nerding = Label::SKOSXL::Base.where(:origin => "nerding").first
+    nerding = Label::Skosxl::Base.where(:origin => "nerding").first
 
     # test for duplicate inflectionals not getting created
     assert_not_nil nerding
