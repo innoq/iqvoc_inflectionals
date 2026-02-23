@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'iqvoc', '~> 4.15.1', :github => 'innoq/iqvoc', branch: :main
-gem 'iqvoc_skosxl', '~> 2.11.3', :github => 'innoq/iqvoc_skosxl', branch: :main
+gem 'iqvoc_skosxl', '~> 2.11.5', :github => 'innoq/iqvoc_skosxl', branch: :main
 
 platforms :ruby do
   gem 'pg'
