@@ -10,5 +10,5 @@ Iqvoc.config.register_setting("title", "iQvoc Inflectionals")
 # Iqvoc.searchable_class_names << "Inflectional::Base"
 
 Iqvoc::Xllabel.additional_association_class_names.
-    merge!("Inflectional::Base" => "label_id")
+    merge!("Inflectional::Base" => { foreign_key: "label_id", inverse_of: :label })
 Iqvoc::Xllabel.view_sections += ["inflectionals"]
