@@ -1,0 +1,4 @@
+// iqvoc_skosxl's own manifest already pulls in iqvoc's, so importing it
+// alone is enough - importing both would duplicate every rule in the
+// compiled output, since plain @import (unlike @use) isn't deduplicated.
+@import 'iqvoc_skosxl/app/assets/stylesheets/manifest';
