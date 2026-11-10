@@ -1,6 +1,6 @@
 {
   "name": "iqvoc_inflectionals",
-  "version": "2.11.4",
+  "version": "2.13.0",
   "description": "Inflectionals extension for iQvoc vocabulary management system built on the Semantic Web",
   "main": "app/javascript/manifest.js",
   "files": [
