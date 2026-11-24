@@ -15,11 +15,18 @@ module Inflectionable
 
     # overwrite class method to query labels by all existing inflectionals
     # instead of basic xl-label value attribute
+    # An EXISTS subquery instead of a join: a label with several matching
+    # inflectionals must appear only once, otherwise LIMIT/OFFSET (pagination in
+    # SQL) would count duplicate rows. A query consisting of wildcards only
+    # (blank search) matches every label, so the subquery is left out.
     def self.by_query_value(query)
-      Iqvoc::Xllabel.base_class
-                    .references(:inflectionals)
-                    .joins(:inflectionals)
-                    .where('inflectionals.value ILIKE ?', query.to_s.downcase)
+      label_class = Iqvoc::Xllabel.base_class
+      scope = label_class.references(label_class.table_name)
+      return scope if query.to_s.delete('%').strip.empty?
+
+      scope.where("EXISTS (SELECT 1 FROM #{Inflectional::Base.table_name} " \
+                  "WHERE #{Inflectional::Base.table_name}.label_id = #{label_class.table_name}.id " \
+                  "AND #{Inflectional::Base.table_name}.value ILIKE ?)", query.to_s.downcase)
     end
   end
 
